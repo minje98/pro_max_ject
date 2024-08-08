@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart';
+<<<<<<< Updated upstream
 import 'package:pro_max_ject/map.dart';
 import 'package:pro_max_ject/reminder.dart';
 import 'package:pro_max_ject/signup.dart';
@@ -8,6 +9,16 @@ import 'package:pro_max_ject/widgetmain.dart';
 import 'package:pro_max_ject/forgot.dart';
 import 'package:pro_max_ject/reminder.dart';
 import 'package:pro_max_ject/faq.dart';
+=======
+import 'package:pro_max_ject/screen/login_screen.dart';
+import 'package:pro_max_ject/screen/map.dart';
+import 'package:pro_max_ject/screen/myPage.dart';
+import 'package:pro_max_ject/screen/reminder.dart';
+import 'package:pro_max_ject/screen/signup.dart';
+import 'package:pro_max_ject/screen/widgetmain.dart';
+import 'package:pro_max_ject/screen/phone_verification.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+>>>>>>> Stashed changes
 
 import 'firebase_options.dart';
 
@@ -28,6 +39,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
+<<<<<<< Updated upstream
 
   // runApp(const MyApp()); //로그인 창
   // runApp(const SignUp()); // 가입 창
@@ -36,15 +48,26 @@ Future<void> main() async {
   // runApp(const ForGot());  // 아이디 비번 찾는창
   // runApp(const ReminderList());  // 알림 페이지
   runApp(const FAQList()); // FAQ
+=======
+  // 로그인 상태 확인
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+  runApp(MyApp(isLoggedIn: isLoggedIn));
+  //runApp(const PhoneVerification());
+>>>>>>> Stashed changes
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isLoggedIn;
+
+  const MyApp({super.key, required this.isLoggedIn});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+<<<<<<< Updated upstream
       home: Scaffold(
         appBar: AppBar(
           // 삼각형 추가로 하면 좋을듯
@@ -116,6 +139,17 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
+=======
+      initialRoute: isLoggedIn ? '/main' : '/login',
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/signup': (context) => SignUp(),
+        '/main': (context) => MainScreen(),
+      },
+    );
+  }
+}
+>>>>>>> Stashed changes
 
                 SizedBox(height: 24), // 버튼과 이미지 사이의 간격
                 Center(

@@ -50,7 +50,12 @@ dependencies:
   kakao_flutter_sdk_friend: ^1.9.5 # 피커 API 패키지
   kakao_flutter_sdk_navi: ^1.9.5 # 카카오내비 API 패키지
   flutter_naver_login: ^1.8.0
+<<<<<<< Updated upstream
 
+=======
+  crypto: ^3.0.0 #비밀번호 해시화 패키지
+  shared_preferences: ^2.0.8 #세션처리 패키지
+>>>>>>> Stashed changes
 
 dev_dependencies:
   flutter_test:
